@@ -8,7 +8,7 @@ HttpServer server = HttpServer.create(new InetSocketAddress(8091),0);
 server.createContext("/currentuser", new CurrentUserHandler(server:server));
 server.createContext("/shutdown", new ShutdownHandler(server:server));
 server.start();
-log("Startup Server on 8091);
+log("Startup Server on 8091");
 
 // to encapsule contenttype,status and this stuff
 abstract class AdvancedHttpHandler implements HttpHandler {
@@ -58,5 +58,5 @@ class ShutdownHandler extends AdvancedHttpHandler {
 
 def log(String s) {
     println(s)
-    Logger.getLogger("hybris-groovy").info(s)
+    Logger.getLogger("hybris-groovy-webserver").info(s)
 }
