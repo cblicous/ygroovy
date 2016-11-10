@@ -26,7 +26,7 @@ abstract class AdvancedHttpHandler implements HttpHandler {
 class CurrentUserHandler extends AdvancedHttpHandler {
     def server
     public void handle(HttpExchange exchange) throws IOException {
-          def userService = Registry.getApplicationContext().getBean("userService", UserService.class);
+          def userService = Registry.getApplicationContext().getParent().getBean("userService", UserService.class);
       	  def userModel = userService.getCurrentUser()
            def builder = new JsonBuilder()
            builder {
