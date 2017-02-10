@@ -27,25 +27,23 @@ public void runme(){
         ObjectName activeMQ = new ObjectName("org.apache.activemq:BrokerName=amqBroker,Type=Broker");
         BrokerViewMBean mbean = (BrokerViewMBean) MBeanServerInvocationHandler.newProxyInstance(conn, activeMQ,BrokerViewMBean.class, true);
 
-        println("mbean get");
-        queueViewMBeanList.each{
-            QueueViewMBean bean = findQueueMBean(conn, mbean, it);
-            println("Queue" + bean + " Size " + bean.getQueueSize());
-        }
-
+		println("mbean get");
+		queueViewMBeanList.each{
+		    QueueViewMBean bean = findQueueMBean(conn, mbean, it);
+		    println("Queue" + bean + " Size " + bean.getQueueSize());
 		}
-		catch ( IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch ( MalformedObjectNameException  e){
-			 e.printStackTrace();
-		} finally {
-      //if (conn != null) {
-      //  conn.close();
-      //}
+
+	}catch ( IOException e){
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch ( MalformedObjectNameException  e){
+		 e.printStackTrace();
+	} finally {
+    	//if (conn != null)
+    	//conn.close();
+     	}
     }
-	}
+}
 
   private MBeanServerConnection connectToServer(String urlString, String username, String password) {
     if (username && password) {
