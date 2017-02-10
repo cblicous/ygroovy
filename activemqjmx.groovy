@@ -15,10 +15,10 @@ import javax.management.remote.*;
 import org.apache.activemq.broker.jmx.BrokerViewMBean;
 import org.apache.activemq.broker.jmx.QueueViewMBean;
 
+
 public void runme(){
-  MBeanServerConnection conn;
-		try
-		{
+    MBeanServerConnection conn;
+    try{
         def queueViewMBeanList = ['incoming.dealeraccount.productdata.search.queue', 'outgoing.dealeraccount.productdata.search.queue'];
         conn =  connectToServer("service:jmx:rmi:///jndi/rmi://localhost:9003/jmxrmi",null,null);
 
